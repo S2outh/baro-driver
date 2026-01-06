@@ -1,0 +1,11 @@
+/home/pfoschten/wuespace/south/rust/baro_driver/target/debug/deps/embassy_macros-9e399369ef823d2f.d: /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/lib.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/mod.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/main.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/task.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/util/mod.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/util/ctxt.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/../README.md
+
+/home/pfoschten/wuespace/south/rust/baro_driver/target/debug/deps/libembassy_macros-9e399369ef823d2f.so: /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/lib.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/mod.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/main.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/task.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/util/mod.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/util/ctxt.rs /home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/../README.md
+
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/lib.rs:
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/mod.rs:
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/main.rs:
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/macros/task.rs:
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/util/mod.rs:
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/util/ctxt.rs:
+/home/pfoschten/.cargo/git/checkouts/embassy-c08a80187403f815/7703f47/embassy-macros/src/../README.md:

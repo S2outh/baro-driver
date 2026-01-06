@@ -1,0 +1,1 @@
+Irqs: Binding<embassy_stm32::interrupt::typelevel::I2C1, ErrorInterruptHandler<embassy_stm32::peripherals::I2C1>>

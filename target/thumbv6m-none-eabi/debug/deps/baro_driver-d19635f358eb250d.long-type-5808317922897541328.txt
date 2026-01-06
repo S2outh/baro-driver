@@ -1,0 +1,1 @@
+Option<B>: Binding<<T as embassy_stm32::i2c::Instance>::EventInterrupt, EventInterruptHandler<T>>

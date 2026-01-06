@@ -1,0 +1,1 @@
+/home/pfoschten/wuespace/south/rust/baro_driver/target/thumbv6m-none-eabi/debug/libLSM6DSV32.rlib: /home/pfoschten/wuespace/south/rust/baro_driver/build.rs /home/pfoschten/wuespace/south/rust/baro_driver/src/hscmrnn030pd2a3.rs /home/pfoschten/wuespace/south/rust/baro_driver/src/lib.rs
