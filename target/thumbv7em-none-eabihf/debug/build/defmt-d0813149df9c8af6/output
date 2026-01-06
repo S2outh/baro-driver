@@ -1,3 +1,0 @@
-cargo:rustc-link-search=/home/pfoschten/wuespace/south/rust/baro_driver/target/thumbv7em-none-eabihf/debug/build/defmt-d0813149df9c8af6/out
-cargo:rustc-check-cfg=cfg(c_variadic)
-cargo:rustc-check-cfg=cfg(no_cas)

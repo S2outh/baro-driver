@@ -1,1 +1,0 @@
-{"rustc":376294102990579366,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[17863628319047657271,"build_script_build",false,7176650414722184617]],"local":[{"RerunIfChanged":{"output":"thumbv7em-none-eabihf/debug/build/embassy-sync-46d8c59302e33e39/output","paths":["build.rs"]}}],"rustflags":[],"config":0,"compile_kind":0}
