@@ -1,10 +1,7 @@
 [package]
-name = "baro_driver"
+name = "baro_testing"
 version = "0.1.0"
 edition = "2024"
-
-[lib]
-path = "src/lib.rs"
 
 [[bin]]
 name = "baro"
@@ -36,6 +33,8 @@ nb = "1.0.0"
 
 embedded-io-async = { version = "0.6.1" }
 bitflags = "2.10.0"
+
+hscmrnn030pa = { version = "0.1.0", path = "../hscmrnn030pa" }
 
 [profile.release]
 debug = 2

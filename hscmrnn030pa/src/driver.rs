@@ -10,7 +10,6 @@ use embassy_stm32::{
     mode::Async,
 };
 use embassy_time::Timer; 
-use {defmt_rtt as _, panic_probe as _};
 
 const ADDR_OUTPUT: u8 = 0x28;
 
@@ -19,7 +18,7 @@ pub trait Irqs<'d, T: I2cInstance> = Binding<T::EventInterrupt, EventInterruptHa
     + 'd;
 
 #[derive(Copy, Clone, defmt::Format)]
-pub enum MyChild {
+pub enum BaroError {
     NotInitialized,
     I2cError(Error),
 }
@@ -27,7 +26,7 @@ pub enum MyChild {
 #[derive(Copy, Clone, defmt::Format)]
 pub struct Raw {
     pub status: u8,            // 2 bit
-    pub bridge_data: u16,      //14 bit
+    pub pressure_data: u16,    //14 bit
     pub temperature_data: u16, //14 bit
 }
 
@@ -43,7 +42,7 @@ impl Raw {
         const OUT_MAX: f32 = 14745.0; //90% of 2^14
         const PRESSURE_RANGE_PA: f32 = 206_842.0; //30 psi in PA
 
-        let c = (self.bridge_data as f32).clamp(OUT_MIN, OUT_MAX);
+        let c = (self.pressure_data as f32).clamp(OUT_MIN, OUT_MAX);
 
         (c - OUT_MIN) * PRESSURE_RANGE_PA / (OUT_MAX - OUT_MIN)
     }
@@ -111,12 +110,12 @@ where
         baro_driver
     }
 
-    pub async fn read_out(&mut self) -> Result<Raw, MyChild> {
+    pub async fn read_out(&mut self) -> Result<Raw, BaroError> {
         let mut raw_data_arr = [0u8; 4];
         match self
             .i2c
             .as_mut()
-            .ok_or(MyChild::NotInitialized)?
+            .ok_or(BaroError::NotInitialized)?
             .read(ADDR_OUTPUT, &mut raw_data_arr)
             .await
         {
@@ -124,7 +123,7 @@ where
                 self.err_cnt = 0;
                 Ok(Raw {
                     status: (raw_data_arr[0] & 0xC0) >> 6,
-                    bridge_data: (((raw_data_arr[0] & 0x3F) as u16) << 8)
+                    pressure_data: (((raw_data_arr[0] & 0x3F) as u16) << 8)
                         | (raw_data_arr[1] as u16),
                     temperature_data: (((raw_data_arr[2] as u16) << 8)
                         | ((raw_data_arr[3] & 0xE0) as u16))
@@ -150,7 +149,7 @@ where
                 }
                 self.err_cnt += 1;
                 error!("I2c Error: {:?}", e);
-                Err(MyChild::I2cError(e))
+                Err(BaroError::I2cError(e))
             }
         }
     }

@@ -2,7 +2,7 @@
 #![no_main]
 #![feature(type_alias_impl_trait)]
 
-use baro_driver::hscmrnn030pa2a3::*;
+use hscmrnn030pa::driver::*;
 use defmt::*; 
 use embassy_executor::{Spawner};
 use embassy_stm32::{bind_interrupts, i2c, peripherals};
