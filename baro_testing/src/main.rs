@@ -37,8 +37,9 @@ async fn main(_spawner: Spawner) {
         let result = baro.read_out().await;
         match result {
             Ok(raw) => {
-                let temp = raw.baro_temp_convert();
-                let pressure = raw.baro_pressure_convert_pa();
+                //let temp = raw.baro_temp_convert();
+                let temp = baro_temp_convert(raw.temperature_data);
+                let pressure = baro_pressure_convert_pa(raw.pressure_data);
 
                 info!("Temp: {}, Pressure: {}", temp, pressure);
             }

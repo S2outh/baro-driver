@@ -1,4 +1,4 @@
-use defmt::*; 
+use defmt::*;
 use embassy_stm32::{
     Peri,
     gpio::{Flex, Speed},
@@ -9,7 +9,7 @@ use embassy_stm32::{
     interrupt::typelevel::Binding,
     mode::Async,
 };
-use embassy_time::Timer; 
+use embassy_time::Timer;
 
 const ADDR_OUTPUT: u8 = 0x28;
 
@@ -30,22 +30,20 @@ pub struct Raw {
     pub temperature_data: u16, //14 bit
 }
 
-impl Raw {
-    pub fn baro_temp_convert(&self) -> f32 {
-        (self.temperature_data as f32 / 2047.0) * 200.0 - 50.0 // Temprature = 11 Bit -> 2^11 = 2048
-        // Temp Range -50...150 C -> 150-(-50) = 200
-        // Offset -50, so raw_temp = 0 -> -50 C
-    }
+pub fn baro_temp_convert(temperature_data:u16) -> f32 {
+    (temperature_data as f32 / 2047.0) * 200.0 - 50.0 // Temprature = 11 Bit -> 2^11 = 2048
+    // Temp Range -50...150 C -> 150-(-50) = 200
+    // Offset -50, so raw_temp = 0 -> -50 C
+}
 
-    pub fn baro_pressure_convert_pa(&self) -> f32 {
-        const OUT_MIN: f32 = 1638.0; //10% of 2^14
-        const OUT_MAX: f32 = 14745.0; //90% of 2^14
-        const PRESSURE_RANGE_PA: f32 = 206_842.0; //30 psi in PA
+pub fn baro_pressure_convert_pa(pressure_data: u16) -> f32 {
+    const OUT_MIN: f32 = 1638.0; //10% of 2^14
+    const OUT_MAX: f32 = 14745.0; //90% of 2^14
+    const PRESSURE_RANGE_PA: f32 = 206_842.0; //30 psi in PA
 
-        let c = (self.pressure_data as f32).clamp(OUT_MIN, OUT_MAX);
+    let c = (pressure_data as f32).clamp(OUT_MIN, OUT_MAX);
 
-        (c - OUT_MIN) * PRESSURE_RANGE_PA / (OUT_MAX - OUT_MIN)
-    }
+    (c - OUT_MIN) * PRESSURE_RANGE_PA / (OUT_MAX - OUT_MIN)
 }
 
 pub struct Baro<'d, T, SCL, SDA, B, TX, RX>
